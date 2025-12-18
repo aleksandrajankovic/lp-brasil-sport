@@ -66,9 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* WINNERS SLIDER – 2 PROMO KARTICE */
 document.addEventListener("DOMContentLoaded", () => {
-  const wrapper = document.getElementById("winnersGrid");
-  if (!wrapper) return;
-
+  const wrappers = [
+    document.getElementById("winnersGridMobile"),
+    document.getElementById("winnersGridDesktop"),
+  ].filter(Boolean);
+  if (!wrappers.length) return;
   const cards = [
     {
       id: "sport",
@@ -126,57 +128,39 @@ document.addEventListener("DOMContentLoaded", () => {
     },
   ];
 
-  wrapper.innerHTML = "";
-  cards.forEach((card) => {
-    const slide = document.createElement("div");
-    slide.className =
-      "swiper-slide flex items-stretch justify-center px-1 md:px-2";
-    slide.innerHTML = `
-  <div
-    class="relative w-full max-w-none h-[200px]
-           rounded-[12px]
-           px-6 py-6
-            md:${card.gradientDesk} bg-gradient-to-br ${card.gradient}
-    
-           flex items-start sm:items-center gap-4 md:gap-6"
-  >
-    <div class="flex-1 text-left">
-      <p class="font-bold uppercase text-[22px] text-[#d9a445] leading-tight">
-        ${card.title}
-      </p>
-      <p class="mt-3 text-[18px] md:text-[18px] leading-snug text-[#fff]">
-        ${card.text}
-      </p>
-    </div>
+  function renderInto(wrapper) {
+    wrapper.innerHTML = "";
+    cards.forEach((card) => {
+      const slide = document.createElement("div");
+      slide.className =
+        "swiper-slide flex items-stretch justify-center px-1 md:px-2";
+      slide.innerHTML = `
+        <div class="relative w-full max-w-none h-[200px] rounded-[12px] px-6 py-6
+                    md:${card.gradientDesk} bg-gradient-to-br ${card.gradient}
+                    flex items-start sm:items-center gap-4 md:gap-6">
+          <div class="flex-1 text-left">
+            <p class="font-bold uppercase text-[22px] text-[#d9a445] leading-tight">${card.title}</p>
+            <p class="mt-3 text-[18px] md:text-[18px] leading-snug text-[#fff]">${card.text}</p>
+          </div>
 
-    <!-- DESKTOP  -->
-    <div class="flex-shrink-0 hidden sm:block">
-      <img
-        src="${card.img}"
-        alt="${card.alt}"
-        class="w-[80px] md:w-[90px] lg:w-[110px] h-[100px] object-contain"
-        loading="lazy"
-        decoding="async"
-      />
-    </div>
+          <div class="flex-shrink-0 hidden sm:block">
+            <img src="${card.img}" alt="${card.alt}"
+                 class="w-[80px] md:w-[90px] lg:w-[110px] h-[100px] object-contain"
+                 loading="lazy" decoding="async" />
+          </div>
 
-    <!-- MOBILE -->
-    <img
-      src="${card.img}"
-      alt="${card.alt}"
-      class="block sm:hidden
-           
-             w-[100px] h-[150px] object-contain"
-      loading="lazy"
-      decoding="async"
-    />
-  </div>
-`;
+          <img src="${card.img}" alt="${card.alt}"
+               class="block sm:hidden w-[100px] h-[150px] object-contain"
+               loading="lazy" decoding="async" />
+        </div>
+      `;
+      wrapper.appendChild(slide);
+    });
+  }
 
-    wrapper.appendChild(slide);
-  });
+  wrappers.forEach(renderInto);
 
-  new Swiper(".swiper-container", {
+  const swiperOpts = {
     loop: false,
     spaceBetween: 16,
     grabCursor: true,
@@ -187,20 +171,18 @@ document.addEventListener("DOMContentLoaded", () => {
       pauseOnMouseEnter: false,
     },
     breakpoints: {
-      0: {
-        slidesPerView: 1.05,
-        allowTouchMove: true,
-      },
-      640: {
-        slidesPerView: 1.2,
-        allowTouchMove: true,
-      },
-      1024: {
-        slidesPerView: 3,
-        allowTouchMove: true,
-      },
+      0: { slidesPerView: 1.05, allowTouchMove: true },
+      640: { slidesPerView: 1.2, allowTouchMove: true },
+      1024: { slidesPerView: 3, allowTouchMove: true },
     },
-  });
+  };
+
+  if (document.querySelector(".winners-swiper-mobile")) {
+    new Swiper(".winners-swiper-mobile", swiperOpts);
+  }
+  if (document.querySelector(".winners-swiper-desktop")) {
+    new Swiper(".winners-swiper-desktop", swiperOpts);
+  }
 });
 
 /*SPORTS SLIDER*/

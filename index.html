@@ -153,34 +153,36 @@
     <!-- MOBILE HERO -->
     <section
       id="heroSection"
-      class="md:hidden relative text-center bg-cover bg-center flex flex-col justify-start hero-bg py-[50px]"
+      class="md:hidden relative text-center bg-cover bg-center flex flex-col justify-start hero-bg pt-[50px]"
     >
       <div class="px-4 mt-[-25px]">
-        <!-- TODA SEMANA gore -->
         <img
           src="./assets/images/logo.png"
           alt="Toda semana"
-          class="promo-img-line promo-img-1 mx-auto w-[90%] max-w-[200px] mb-[20px]"
+          class="promo-img-line promo-img-1 mx-auto w-[90%] max-w-[200px]"
         />
 
-        <div class="flex flex-col items-center justify-center gap-2 mt-2">
-          <img
-            src="./assets/images/100-RG.png"
-            alt="100 rodadas grátis"
-            class="promo-img-line promo-img-2 w-[180px]"
-          />
-          <img
-            src="./assets/images/plus.png"
-            alt="+"
-            class="promo-img-line promo-img-3 w-[30px]"
-          />
-          <img
-            src="./assets/images/freebets.png"
-            alt="freebets"
-            class="promo-img-line promo-img-4 w-[200px]"
-          />
+        <div
+          class="promo-row flex flex-col items-center justify-center gap-2 mt-2"
+        >
+          <h2
+            class="text-center text-[26px] font-semibold bg-gradient-to-b from-[#fdeec9] via-[#d9a445] to-[#8f6413] bg-clip-text text-transparent leading-[1] uppercase italic"
+          >
+            A casa completa para apostas <br />
+            esportivas no Brasil!
+          </h2>
         </div>
       </div>
+
+      <section class="px-4 py-8 overflow-x-hidden">
+        <div class="winners">
+          <div
+            class="swiper-container winners-swiper-mobile max-w-screen-xl mx-auto overflow-hidden"
+          >
+            <div class="swiper-wrapper" id="winnersGridMobile"></div>
+          </div>
+        </div>
+      </section>
       <section class="px-4 block md:hidden">
         <div
           class="max-w-5xl mt-2 mx-auto rounded-[22px] md:justify-center md:flex md:items-stretch px-2 py-2 shadow-[0_8px_24px_rgba(0,0,0,0.7)]"
@@ -264,9 +266,9 @@
             <!-- Swiper container -->
             <div class="winners">
               <div
-                class="swiper-container max-w-screen-xl mx-auto overflow-hidden"
+                class="swiper-container winners-swiper-desktop max-w-screen-xl mx-auto overflow-hidden"
               >
-                <div class="swiper-wrapper" id="winnersGrid"></div>
+                <div class="swiper-wrapper" id="winnersGridDesktop"></div>
               </div>
             </div>
           </section>
@@ -333,20 +335,11 @@
     </section>
 
     <!-- 3 STEPS -->
-    <section>
-      <!-- WINNERS SECTION -->
-      <section class="px-4 py-8 mt-10 overflow-x-hidden">
-        <!-- Swiper container -->
-        <div class="winners">
-          <div class="swiper-container max-w-screen-xl mx-auto overflow-hidden">
-            <div class="swiper-wrapper" id="winnersGrid"></div>
-          </div>
-        </div>
-      </section>
+
 
       <!-- WHY US -->
       <section class="px-3 py-7">
-        <h2 class="text-center text-[32px] font-semibold mb-6">
+        <h2 class="text-center text-[32px] font-semibold py-6">
           Por que escolher a Meridianbet?
         </h2>
         <div
